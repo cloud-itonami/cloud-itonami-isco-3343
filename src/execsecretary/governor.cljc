@@ -66,7 +66,7 @@
                                 routine procurement escalated for
                                 sign-off).
     7. low confidence (< `confidence-floor`)."
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [execsecretary.store :as store]))
 
 (def confidence-floor 0.6)
@@ -93,7 +93,7 @@
    "finalize the commitment"])
 
 (defn- scope-excluded? [proposal]
-  (let [text (str/lower-case (or (:rationale proposal) ""))]
+  (let [text (str/lower (or (:rationale proposal) ""))]
     (boolean (some #(str/includes? text %) scope-exclusion-terms))))
 
 (defn- hard-violations [proposal executive-record]
