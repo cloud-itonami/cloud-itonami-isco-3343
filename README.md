@@ -11,7 +11,7 @@ This repository designs a forkable OSS business for an independent executive sup
 (`execsecretary.governor`), following the itonami actor pattern
 (ADR-2607011000): `:intake -> :advise -> :govern -> :decide -+-> :commit
 (:ok?) +-> :request-approval (:escalate?, human-in-the-loop interrupt)
-+-> :hold (:hard?)`. 15 tests / 37 assertions green (`clojure -M:test`).
++-> :hold (:hard?)`. 15 tests / 37 assertions green (`kbb -M:test`).
 HARD invariants (always hold, never overridable): executive/office
 provenance (the executive record must be independently verified/
 registered before any action), no-actuation (`:effect` must be
