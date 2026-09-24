@@ -1,5 +1,5 @@
 (ns execsecretary.governor-test
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [execsecretary.store :as store]
             [execsecretary.advisor :as advisor]
             [execsecretary.governor :as governor]))

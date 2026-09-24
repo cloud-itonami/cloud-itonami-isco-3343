@@ -1,5 +1,5 @@
 (ns execsecretary.actor-test
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [execsecretary.actor :as actor]
             [execsecretary.store :as store]))
 
