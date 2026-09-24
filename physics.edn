@@ -1,0 +1,32 @@
+;; What this occupation's robot physically does, declared for
+;; kotoba.robotics.process (kotoba-lang/robotics). `kbb -M:physics` runs it.
+;;
+;; README "Robotics premise": a correspondence-intake and scheduling robot
+;; performs document filing, calendar coordination and supply-order drafting
+;; (ISCO 3343 administrative and executive secretaries). Its physical work:
+;; pushing the correspondence cart across the (carpeted) executive floor, and
+;; placing document trays in the executive inbox.
+;;
+;; Every number without a cited source is marked `estimate` in its :basis.
+;; Replacing an estimate with a sourced value is this bot's growth work.
+{:physics/schema "itonami.physical-ai.spec.v1"
+ :repo "cloud-itonami/cloud-itonami-isco-3343"
+ :cases
+ [{:id :correspondence-cart-over-carpet
+   :kind :transport
+   :procedure "robot pushes the correspondence cart 40 m from the mail room to the executive suite; floor ranges from hard floor to deep carpet"
+   :params {:mass-kg 30.0 :payload-kg 15.0 :distance-m 40.0 :v-max-mps 1.0 :a-max-mps2 0.5
+            :brake-decel-mps2 0.8 :drive-force-n 45.0 :cog-height-m 0.55 :support-half-length-m 0.28}
+   :sweep {:param :crr :values [0.01 0.03 0.05 0.07 0.09]}
+   :quantity :cycle-time-s
+   :limit {:max 60.0 :basis "estimate: correspondence reaches the suite within the minute before a scheduled meeting starts"}
+   :boundary {:lo 0.005 :hi 0.12}}
+  {:id :tray-to-executive-inbox
+   :kind :manipulator
+   :procedure "arm places a filled document tray from the cart into the executive's desk inbox"
+   :params {:l1-m 0.35 :l2-m 0.30 :m1-kg 2.5 :m2-kg 1.8
+            :from [0.45 0.05] :to [0.30 0.35] :duration-s 1.5 :steps 300}
+   :sweep {:param :payload-kg :values [0.3 0.8 1.5 2.5 3.5]}
+   :quantity :peak-tau1-nm
+   :limit {:max 22.0 :basis "estimate: continuous shoulder torque of a ~2 kg-payload desktop arm"}
+   :boundary {:lo 0.05 :hi 10.0}}]}
