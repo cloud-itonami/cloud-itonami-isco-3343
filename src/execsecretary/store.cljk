@@ -1,6 +1,6 @@
 (ns execsecretary.store
   "SSoT for the ISCO-08 3343 independent executive-support practice
-  actor (itonami actor pattern, ADR-2607011000 / CLAUDE.md Actors
+  actor (itonami actor pattern, ADR-2607011000 / AGENTS.md Actors
   section; README's 'Robotics premise' — a correspondence-intake and
   scheduling robot performs document filing, calendar coordination and
   supply-order drafting under this advisor/governor pair, which never
